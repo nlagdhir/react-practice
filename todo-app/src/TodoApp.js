@@ -1,4 +1,6 @@
 import { useState } from "react";
+import TodoForm from "./TodoForm";
+import TodoList from "./TodoList";
 
 function TodoApp () {
     const [todos, setTodos] = useState([]);
@@ -23,15 +25,9 @@ function TodoApp () {
 
 
     return (<>
-        <form onSubmit={handleFormSubmit}>
-            <label htmlFor="todo">Todos : </label>
-            <input type="text" id="todo" name="todo" value={entry} onChange={handleTodoChange} />
-            <input type='submit' value="Save" />
-        </form>
-
-        <ul>
-            {todos.map((todo,index) => <li key={index}>{todo}</li>)}
-        </ul>
+            <TodoForm entry={entry} onTodoChange={handleTodoChange} onFormSubmit={handleFormSubmit} />
+            <TodoList todos={todos} />
+        
     </>
     )
 }
